@@ -8,49 +8,83 @@ namespace AbhijeetConsole
 {
     class Program
     {
+
         static void Main()
-        { 
-
-            //var
-            //var must be initiliased whereas dynamic is not necessary
-            //var can not be return from method
-            //dynamic can have class property 
-        
-            //C# 3.0 var
-           // var obj = new gsjhgasdfsgdhfagsdjhfgsd();
-            var x=1;
-            var o = new object();
-            var s = "ramesh";
-            //s = 1;//error;
+        {
+           // C obj = new C();//m from A--,m from b--m from c
+            //destructor go from child to parent
 
 
-            //c# 4.0
-            dynamic  xx=1;
-            xx = "Rahul";
-
-            dynamic e = new Program();
-
-            if (e is Program)
-            {
-                var newobj = e as Program;
-            }
-            else
-            {
-                var newobj = e as Emp;
-            }
-            Console.WriteLine(xx);
-
-
-    
-
+            D d = new D(2);
             Console.ReadLine();
+
+
+
+        }    
+        
+    
+    }
+
+
+    class A
+    {
+        private int id;
+
+
+        public A()
+        {
+            Console.WriteLine("m from A");
+        }
+
+        public A(int id)
+        {
+            // TODO: Complete member initialization
+            this.id = id;
+        }
+
+        ~A()
+        {
+            Console.WriteLine("m from A des");
+        }
+    }
+
+    class B : A {
+
+        public B()
+        {
+            Console.WriteLine("m from B");
+        }
+
+         ~B()
+        {
+            Console.WriteLine("m from B des");
+        }
+    }
+
+    class C : B
+    {
+
+        public C()
+        {
+            Console.WriteLine("m from C");
+        }
+
+         ~C()
+        {
+            Console.WriteLine("m from C des");
         }
 
     }
 
 
-    class Emp { 
-    
+    class D : A {
+
+        public D(int id):base(id)
+        {
+
+        }
     }
+
+                
 
 }
